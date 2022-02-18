@@ -7,8 +7,8 @@ import shutil
 # AUTHOR : MERWIN
 
 class MYPATH:
-    def __init__(self,password):
-        self.password = password
+    def __init__(self):
+        pass
     def make_redirecting_bashfile(self,filename,target_pyfile="",content_edited=None,allow_args=False,max_num_args=0):
         if not allow_args:
             default_command = f"""
