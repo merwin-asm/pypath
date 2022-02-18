@@ -87,8 +87,4 @@ python3  {target_pyfile} {sub}
             else:
                 path_final += each
         return path_final
-if __name__ == '__main__':
-    my_path = MYPATH("....")
-    # print(my_path.addfile_to_path("/home/programming/MYPATH/test_123_2.sh","test_123_2.sh",exe=True))
-    # print(my_path.seek_to_path())
-    # print(my_path.path_var_exists("/usr/bin"))
+    
