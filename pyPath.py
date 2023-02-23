@@ -7,25 +7,18 @@ import shutil
 # AUTHOR : MERWIN
 
 class MYPATH:
-    def __init__(self):
+    def __init__(self,):
         pass
     def make_redirecting_bashfile(self,filename,target_pyfile="",content_edited=None,allow_args=False,max_num_args=0):
         if not allow_args:
-            default_command = f"""
-#!/bin/bash
-python3  {target_pyfile}
-        """
+            default_command = f"#!/bin/bash \npython3  {target_pyfile}"
         else:
             sub = ""
             for e in range(0,max_num_args):
                 sub += ' ${'
                 sub += f'args[{e}]'
                 sub += '} '
-            default_command = f"""
-#!/bin/bash
-args=("$@")
-python3  {target_pyfile} {sub}
-                    """
+            default_command = f"#!/bin/bash\nargs=('$@')\npython3  {target_pyfile} {sub}"
         try:
             file = open(filename, "x")
             if content_edited != None:
@@ -48,7 +41,7 @@ python3  {target_pyfile} {sub}
             os.system("cd /usr/bin")
             if exe:
                 print(True)
-                os.system(f"sudo chmod +x {file_name}")
+                os.chmod(target,0o755)
             if permissions != None:
                 os.system(f"sudo chmod {permissions} {file_name}") #SET Permissions
             return True
@@ -87,4 +80,8 @@ python3  {target_pyfile} {sub}
             else:
                 path_final += each
         return path_final
-    
+if __name__ == '__main__':
+    my_path = MYPATH()
+    # print(my_path.addfile_to_path("/home/merwin/programming/MYPATH/test_123_2.sh","test_123_2.sh",exe=True))
+    # print(my_path.seek_to_path())
+    # print(my_path.path_var_exists("/usr/bin"))
